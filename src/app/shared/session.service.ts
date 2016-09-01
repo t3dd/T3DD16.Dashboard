@@ -23,14 +23,15 @@ export class SessionService {
         return sessions;
       })
       .map((sessions: Session[]) => {
-        let now = new Date(), start = now.getTime() - 1350000, end = now.getTime(), day = now.getDay();
+        let now = new Date(), start = now.getTime() - 1350000, end = now.getTime() + 5400000, day = now.getDay();
 
         return sessions.reverse().filter(session => {
+          let sessionStart = (<Date>session.start).getTime();
           if (
             (<Date>session.start).getDay() === day
-            && (<Date>session.start).getTime() > start
-            && (<Date>session.end).getTime() > end
-            && (session.topics || []).length === 0) {
+            && (session.topics || []).length === 0
+            && (sessionStart > start && sessionStart < end)
+          ) {
             return session;
           }
         }).slice(0, 5).reverse();
