@@ -13,16 +13,12 @@
 .card__header {
   padding: 16px 32px;
   border-bottom: 1px solid #eee;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
 
   h1 {
     margin: 0;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
-    flex: 1;
   }
 }
 
@@ -31,7 +27,7 @@
 }
 
 .speaker__image {
-  display: inline-block;
+  float: left;
   width: 60px;
   height: 60px;
   border-radius: 50%;
@@ -41,13 +37,12 @@
 }
 
 .sessions__details {
-  display: flex;
-  flex-direction: row;
-
   span {
     margin-right: 16px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+    line-height: 24px;
   }
+}
+
+.pull-left {
+  float: left;
 }

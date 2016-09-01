@@ -27,9 +27,10 @@ body {
 }
 
 .container {
-  display: flex;
   > .twitter {
+    width: 520px;
     margin: 16px;
+    float: left;
 
     iframe {
       height: calc(100vh - 32px) !important;
@@ -37,7 +38,8 @@ body {
   }
 
   > .session-app {
+    width: calc(100vw - 585px);
     margin: 0 16px 16px;
-    flex: 1;
+    float: left;
   }
 }
