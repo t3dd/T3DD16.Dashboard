@@ -45,7 +45,7 @@ export class SessionService {
   }
 
   protected fetchSessions() {
-    return this.http.get(`${environment.endpoint}/sessions.json`, {
+    return this.http.get(`${environment.endpoint}/schedule.json`, {
       body: '',
       headers: this.headers,
       withCredentials: true
