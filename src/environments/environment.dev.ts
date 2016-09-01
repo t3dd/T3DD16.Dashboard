@@ -1,3 +1,4 @@
 export const environment = {
-  production: false
+  production: false,
+  endpoint: 'http://t3dd16.dev'
 };
