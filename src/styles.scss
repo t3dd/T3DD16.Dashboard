@@ -25,3 +25,19 @@ body {
   color: #000000;
   background-color: #e7e7e7;
 }
+
+.container {
+  display: flex;
+  > .twitter {
+    margin: 16px;
+
+    iframe {
+      height: calc(100vh - 32px) !important;
+    }
+  }
+
+  > .session-app {
+    margin: 0 16px 16px;
+    flex: 1;
+  }
+}
