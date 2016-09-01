@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { Http, Headers } from '@angular/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { Session } from '../model/session';
@@ -7,7 +7,12 @@ import { Session } from '../model/session';
 @Injectable()
 export class SessionService {
 
-  constructor(protected http: Http) {}
+  protected headers: Headers = new Headers();
+
+  constructor(private http: Http) {
+    this.headers.append('Content-Type', 'application/json');
+    this.headers.append('Accept', 'application/json');
+  }
 
   getUpcommingSessions() {
     return Observable
@@ -40,7 +45,11 @@ export class SessionService {
   }
 
   protected fetchSessions() {
-    return this.http.get(`${environment.endpoint}/sessions.json`);
+    return this.http.get(`${environment.endpoint}/sessions.json`, {
+      body: '',
+      headers: this.headers,
+      withCredentials: true
+    });
   }
 
 }
