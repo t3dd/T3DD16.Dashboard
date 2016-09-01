@@ -3,22 +3,47 @@
 <head>
   <meta charset="utf-8">
   <title>Dashboard</title>
-  <base href="/signage/">
+  <base href="/">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link href='https://fonts.googleapis.com/css?family=Share:400,700' rel='stylesheet' type='text/css'>
 
+  <script>
+    var lastCheck = Date.now();
+    function checkForRefresh() {
+      var lastModified = Date.parse(this.getResponseHeader("Last-Modified"));
+      if (lastCheck < lastModified) {
+        window.location.reload();
+      }
+      lastCheck = Date.now();
+    }
+    window.setInterval(function() {
+      var oReq = new XMLHttpRequest();
+      oReq.addEventListener("load", checkForRefresh);
+      oReq.open("HEAD", window.location);
+      oReq.send();
+    }, 300000);
+  </script>
+
 </head>
 <body>
 <div class="container">
+  <div class="twitter">
+    <a class="twitter-timeline" href="https://twitter.com/hashtag/t3dd16" data-widget-id="771308732009459712">#t3dd16-Tweets</a>
+    <script>!function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https';
+      if (!d.getElementById(id)) {
+        js = d.createElement(s);
+        js.id = id;
+        js.src = p + "://platform.twitter.com/widgets.js";
+        fjs.parentNode.insertBefore(js, fjs);
+      }
+    }(document, "script", "twitter-wjs");</script>
+  </div>
   <div class="session-app">
     <app-root></app-root>
   </div>
-  <div class="twitter">
-    <a class="twitter-timeline"  href="https://twitter.com/hashtag/t3dd16" data-widget-id="771308732009459712">#t3dd16-Tweets</a>
-    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-  </div>
 </div>
-<script type="text/javascript" src="inline.js"></script><script type="text/javascript" src="styles.4a1c883225c9aed5b26c.bundle.js"></script><script type="text/javascript" src="main.0058a322c21687cfcd39.bundle.js"></script></body>
+<script type="text/javascript" src="inline.js"></script><script type="text/javascript" src="styles.f8a9b0730b121c09663c.bundle.js"></script><script type="text/javascript" src="main.7b3b232a7c6b1f8413b6.bundle.js"></script></body>
 </html>

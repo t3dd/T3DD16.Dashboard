@@ -9,15 +9,40 @@
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link href='https://fonts.googleapis.com/css?family=Share:400,700' rel='stylesheet' type='text/css'>
 
+  <script>
+    var lastCheck = Date.now();
+    function checkForRefresh() {
+      var lastModified = Date.parse(this.getResponseHeader("Last-Modified"));
+      if (lastCheck < lastModified) {
+        window.location.reload();
+      }
+      lastCheck = Date.now();
+    }
+    window.setInterval(function() {
+      var oReq = new XMLHttpRequest();
+      oReq.addEventListener("load", checkForRefresh);
+      oReq.open("HEAD", window.location);
+      oReq.send();
+    }, 300000);
+  </script>
+
 </head>
 <body>
 <div class="container">
+  <div class="twitter">
+    <a class="twitter-timeline" href="https://twitter.com/hashtag/t3dd16" data-widget-id="771308732009459712">#t3dd16-Tweets</a>
+    <script>!function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https';
+      if (!d.getElementById(id)) {
+        js = d.createElement(s);
+        js.id = id;
+        js.src = p + "://platform.twitter.com/widgets.js";
+        fjs.parentNode.insertBefore(js, fjs);
+      }
+    }(document, "script", "twitter-wjs");</script>
+  </div>
   <div class="session-app">
     <app-root></app-root>
-  </div>
-  <div class="twitter">
-    <a class="twitter-timeline"  href="https://twitter.com/hashtag/t3dd16" data-widget-id="771308732009459712">#t3dd16-Tweets</a>
-    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
   </div>
 </div>
 </body>
