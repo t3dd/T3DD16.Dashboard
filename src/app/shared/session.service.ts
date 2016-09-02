@@ -40,7 +40,7 @@ export class SessionService {
           ) {
             return session;
           }
-        }).slice(0, 5).reverse();
+        }).slice(0, 6).reverse();
       });
   }
 
